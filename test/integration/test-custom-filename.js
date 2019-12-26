@@ -19,7 +19,8 @@ var relativeFile = path.relative(path.join(knownFile, '..', '..'), knownFile);
 
 var options = {
   filename: 'test.png',
-  contentType: 'image/gif'
+  contentType: 'image/gif',
+  _nonAsciiFilename: 'フェニックス.jpg'
 };
 
 var server = http.createServer(function(req, res) {
@@ -59,6 +60,9 @@ var server = http.createServer(function(req, res) {
     assert('unknown_everything' in files);
     assert.strictEqual(files['unknown_everything'].type, FormData.DEFAULT_CONTENT_TYPE, 'Expects default content-type');
 
+    assert('custom_non_ASCII_filename' in files);
+    assert.strictEqual(files['custom_non_ASCII_filename'].name, options._nonAsciiFilename, 'Expects custom non ASCII filename');
+
     res.writeHead(200);
     res.end('done');
   });
@@ -86,6 +90,8 @@ server.listen(common.port, function() {
   form.append('unknown_with_name_prop', customNameStream);
   // No options or implicit file type from extension.
   form.append('unknown_everything', fs.createReadStream(unknownFile));
+
+  form.append('custom_non_ASCII_filename', fs.createReadStream(knownFile), { filename: options._nonAsciiFilename });
 
   common.actions.submit(form, server);
 });
