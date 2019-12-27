@@ -59,8 +59,10 @@ var FormData = require(common.dir.lib + '/form_data');
   'Content-Disposition: form-data; name="' + asciiFileName + '"; filename="' + asciiFile + '"' + FormData.LINE_BREAK +
   'Content-Type: image/jpeg' + FormData.LINE_BREAK + FormData.LINE_BREAK),
     Buffer.from( FormData.LINE_BREAK + '--' + boundary + FormData.LINE_BREAK +
-  'Content-Disposition: form-data; name="' + nonAsciiFileName + '"; filename="' + nonAsciiFile +
-      '"; filename*="' + 'UTF-8\'\'%E3%83%95%E3%82%A7%E3%83%8B%E3%83%83%E3%82%AF%E3%82%B9.jpg"' + FormData.LINE_BREAK +
+  'Content-Disposition: form-data; name="' + nonAsciiFileName +
+      '"; filename="' + encodeURIComponent(nonAsciiFile) +
+      '"; filename*="' + 'UTF-8\'\'%E3%83%95%E3%82%A7%E3%83%8B%E3%83%83%E3%82%AF%E3%82%B9.jpg"' +
+      FormData.LINE_BREAK +
   'Content-Type: image/jpeg' + FormData.LINE_BREAK + FormData.LINE_BREAK),
     Buffer.from( FormData.LINE_BREAK + '--' + boundary + FormData.LINE_BREAK +
   'Content-Disposition: form-data; name="' + emptyFileName + '"; filename=""' + FormData.LINE_BREAK +
