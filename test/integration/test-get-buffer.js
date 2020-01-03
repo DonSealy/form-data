@@ -20,11 +20,14 @@ var FormData = require(common.dir.lib + '/form_data');
   var intValue = 1549873167987;
   var bufferName = 'Buffer';
   var bufferValue = Buffer.from([0x00,0x4a,0x45,0x46,0x46,0x52,0x45,0x59,0x255]);
+  var emptyFileName = 'EmptyFile';
+  var emptyFileValue = '';
 
   // Fill the formData object
   form.append( stringName, stringValue );
   form.append( intName, intValue );
   form.append( bufferName, bufferValue );
+  form.append( emptyFileName, emptyFileValue, { filename: '' } );
 
   // Get the resulting Buffer
   var buffer = form.getBuffer();
@@ -45,7 +48,10 @@ var FormData = require(common.dir.lib + '/form_data');
   'Content-Type: application/octet-stream' + FormData.LINE_BREAK +
     FormData.LINE_BREAK),
     bufferValue,
-    Buffer.from( FormData.LINE_BREAK + '--' + boundary + '--' + FormData.LINE_BREAK )
+    Buffer.from( FormData.LINE_BREAK + '--' + boundary + FormData.LINE_BREAK +
+  'Content-Disposition: form-data; name="' + emptyFileName + '"; filename=""' + FormData.LINE_BREAK +
+    FormData.LINE_BREAK +
+    FormData.LINE_BREAK + '--' + boundary + '--' + FormData.LINE_BREAK )
   ] );
 
   // Test if the buffer content, equals the expected buffer.
