@@ -21,7 +21,7 @@ var FormData = require(common.dir.lib + '/form_data');
   var bufferName = 'Buffer';
   var bufferValue = Buffer.from([0x00,0x4a,0x45,0x46,0x46,0x52,0x45,0x59,0x255]);
   var emptyFileName = 'EmptyFile';
-  var emptyFileValue = '';
+  var emptyFileValue = null;
 
   // Fill the formData object
   form.append( stringName, stringValue );
