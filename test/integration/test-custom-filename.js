@@ -61,7 +61,7 @@ var server = http.createServer(function(req, res) {
     assert.strictEqual(files['unknown_everything'].type, FormData.DEFAULT_CONTENT_TYPE, 'Expects default content-type');
 
     assert('custom_non_ASCII_filename' in files);
-    assert.strictEqual(files['custom_non_ASCII_filename'].name, encodeURIComponent(options._nonAsciiFilename), 'Expects custom non ASCII filename');
+    assert.strictEqual(files['custom_non_ASCII_filename'].name, options._nonAsciiFilename, 'Expects custom non ASCII filename');
 
     res.writeHead(200);
     res.end('done');
