@@ -37,6 +37,9 @@ var server = http.createServer(function(req, res) {
     assert.strictEqual(files['custom_filename'].name, options.filename, 'Expects custom filename');
     assert.strictEqual(files['custom_filename'].type, mime.lookup(knownFile), 'Expects original content-type');
 
+    assert('empty_filename' in files);
+    assert.strictEqual(files['empty_filename'].name, '', 'Expects empty filename');
+
     assert('custom_filepath' in files);
     assert.strictEqual(files['custom_filepath'].name, relativeFile.replace(/\\/g, '/'), 'Expects custom filepath');
     assert.strictEqual(files['custom_filepath'].type, mime.lookup(knownFile), 'Expects original content-type');
@@ -69,6 +72,8 @@ server.listen(common.port, function() {
   form.append('custom_everything', fs.createReadStream(knownFile), options);
   // Filename only with real file
   form.append('custom_filename', fs.createReadStream(knownFile), options.filename);
+  // Filename only with empty file
+  form.append('empty_filename', '', { filename: '' });
   // Filename only with unknown file
   form.append('unknown_with_filename', fs.createReadStream(unknownFile), options.filename);
   // Filename only with unknown file
