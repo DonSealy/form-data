@@ -21,12 +21,7 @@
     "debug": "verbose=1 ./test/run.js",
     "browser": "browserify -t browserify-istanbul test/run-browser.js | obake --coverage",
     "check": "istanbul check-coverage coverage/coverage*.json",
-    "files": "pkgfiles --sort=name",
-    "get-version": "node -e \"console.log(require('./package.json').version)\"",
-    "update-readme": "sed -i.bak 's/\\/master\\.svg/\\/v'$(npm --silent run get-version)'.svg/g' README.md",
-    "restore-readme": "mv README.md.bak README.md",
-    "prepublish": "in-publish && npm run update-readme || not-in-publish",
-    "postpublish": "npm run restore-readme"
+    "files": "pkgfiles --sort=name"
   },
   "pre-commit": [
     "lint",
@@ -50,7 +45,6 @@
     "fake": "^0.2.2",
     "far": "^0.0.7",
     "formidable": "^1.0.17",
-    "in-publish": "^2.0.0",
     "is-node-modern": "^1.0.0",
     "istanbul": "^0.4.5",
     "obake": "^0.1.2",
