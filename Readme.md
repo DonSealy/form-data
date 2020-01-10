@@ -1,17 +1,10 @@
-# Form-Data [![NPM Module](https://img.shields.io/npm/v/form-data.svg)](https://www.npmjs.com/package/form-data) [![Join the chat at https://gitter.im/form-data/form-data](http://form-data.github.io/images/gitterbadge.svg)](https://gitter.im/form-data/form-data)
+# Form-Data [![NPM Module](https://img.shields.io/npm/v/@postman/form-data.svg)](https://www.npmjs.com/package/@postman/form-data) [![Build Status](https://travis-ci.com/postmanlabs/form-data.svg?branch=master)](https://travis-ci.com/postmanlabs/form-data) [![codecov](https://codecov.io/gh/postmanlabs/form-data/branch/master/graph/badge.svg)](https://codecov.io/gh/postmanlabs/form-data)
 
 A library to create readable ```"multipart/form-data"``` streams. Can be used to submit forms and file uploads to other web applications.
 
 The API of this library is inspired by the [XMLHttpRequest-2 FormData Interface][xhr2-fd].
 
 [xhr2-fd]: http://dev.w3.org/2006/webapi/XMLHttpRequest-2/Overview.html#the-formdata-interface
-
-[![Linux Build](https://img.shields.io/travis/form-data/form-data/master.svg?label=linux:6.x-12.x)](https://travis-ci.org/form-data/form-data)
-[![MacOS Build](https://img.shields.io/travis/form-data/form-data/master.svg?label=macos:6.x-12.x)](https://travis-ci.org/form-data/form-data)
-[![Windows Build](https://img.shields.io/travis/form-data/form-data/master.svg?label=windows:6.x-12.x)](https://travis-ci.org/form-data/form-data)
-
-[![Coverage Status](https://img.shields.io/coveralls/form-data/form-data/master.svg?label=code+coverage)](https://coveralls.io/github/form-data/form-data?branch=master)
-[![Dependency Status](https://img.shields.io/david/form-data/form-data.svg)](https://david-dm.org/form-data/form-data)
 
 ## Install
 
@@ -186,15 +179,15 @@ form.submit({
 
 ### Methods
 
-- [_Void_ append( **String** _field_, **Mixed** _value_ [, **Mixed** _options_] )](https://github.com/form-data/form-data#void-append-string-field-mixed-value--mixed-options-).
-- [_Headers_ getHeaders( [**Headers** _userHeaders_] )](https://github.com/form-data/form-data#array-getheaders-array-userheaders-)
-- [_String_ getBoundary()](https://github.com/form-data/form-data#string-getboundary)
-- [_Buffer_ getBuffer()](https://github.com/form-data/form-data#buffer-getbuffer)
-- [_Integer_ getLengthSync()](https://github.com/form-data/form-data#integer-getlengthsync)
-- [_Integer_ getLength( **function** _callback_ )](https://github.com/form-data/form-data#integer-getlength-function-callback-)
-- [_Boolean_ hasKnownLength()](https://github.com/form-data/form-data#boolean-hasknownlength)
-- [_Request_ submit( _params_, **function** _callback_ )](https://github.com/form-data/form-data#request-submit-params-function-callback-)
-- [_String_ toString()](https://github.com/form-data/form-data#string-tostring)
+- [_Void_ append( **String** _field_, **Mixed** _value_ [, **Mixed** _options_] )](https://github.compostmanlabsa/form-data#void-append-string-field-mixed-value--mixed-options-).
+- [_Headers_ getHeaders( [**Headers** _userHeaders_] )](https://github.com/postmanlabs/form-data#array-getheaders-array-userheaders-)
+- [_String_ getBoundary()](https://github.com/postmanlabs/form-data#string-getboundary)
+- [_Buffer_ getBuffer()](https://github.com/postmanlabs/form-data#buffer-getbuffer)
+- [_Integer_ getLengthSync()](https://github.com/postmanlabs/form-data#integer-getlengthsync)
+- [_Integer_ getLength( **function** _callback_ )](https://github.com/postmanlabs/form-data#integer-getlength-function-callback-)
+- [_Boolean_ hasKnownLength()](https://github.com/postmanlabs/form-data#boolean-hasknownlength)
+- [_Request_ submit( _params_, **function** _callback_ )](https://github.com/postmanlabs/form-data#request-submit-params-function-callback-)
+- [_String_ toString()](https://github.com/postmanlabs/form-data#string-tostring)
 
 #### _Void_ append( **String** _field_, **Mixed** _value_ [, **Mixed** _options_] )
 Append data to the form. You can submit about any format (string, integer, boolean, buffer, etc.). However, Arrays are not supported and need to be turned into strings by the user.
@@ -217,7 +210,7 @@ form.append( 'my_file', fs.createReadStream('/foo/bar.jpg'), {filename: 'bar.jpg
 ```
 
 #### _Headers_ getHeaders( [**Headers** _userHeaders_] )
-This method adds the correct `content-type` header to the provided array of `userHeaders`.  
+This method adds the correct `content-type` header to the provided array of `userHeaders`.
 
 #### _String_ getBoundary()
 Return the boundary of the formData. A boundary consists of 26 `-` followed by 24 numbers
